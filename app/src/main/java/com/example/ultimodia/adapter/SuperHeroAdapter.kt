@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ultimodia.R
 import com.example.ultimodia.SuperHero
 
-class SuperHeroAdapter ( private val superheroList:List<SuperHero>) :
+class SuperHeroAdapter ( private val superheroList:List<SuperHero>,
+                         private val onClickListener:((SuperHero) -> Unit)
+                        ) :
     RecyclerView.Adapter<SuperHeroViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
@@ -17,7 +19,7 @@ class SuperHeroAdapter ( private val superheroList:List<SuperHero>) :
 
     override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
         val item = superheroList[position];
-        holder.render(item);
+        holder.render(item,onClickListener);
     }
 
     override fun getItemCount(): Int {
